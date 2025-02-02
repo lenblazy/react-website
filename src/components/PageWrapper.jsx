@@ -1,8 +1,7 @@
 
-function PageWrapper() {
+const PageWrapper = (props) => {
     return (
         <div>
-            {/*Navigation*/}
             <nav className="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
                 <div className="container">
                     <a className="navbar-brand" href="#page-top"><img src="assets/img/navbar-logo.svg" alt="..."/></a>
@@ -23,9 +22,7 @@ function PageWrapper() {
                     </div>
                 </div>
             </nav>
-
-
-
+            {props.children}
         </div>
     )
 }
