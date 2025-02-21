@@ -3,6 +3,7 @@ import {Component} from "react";
 class Field extends Component {
 
     render() {
+        console.log(this.props);
         return (
             <div className={this.props.divCls}>
                 {this.props.elementName === "input" ?
@@ -11,25 +12,23 @@ class Field extends Component {
                         id={this.props.name}
                         type={this.props.type}
                         placeholder={this.props.placeholder}
-                        data-sb-validations="required,email"
-                        value={this.props.value}
-                        onChange={e => this.props.onChange(e)}
+                        required="required"
+                        name={this.props.name}
+                        onChange={this.props.onChange}
+                        onBlur={this.props.onBlur}
                     /> :
                     <textarea
                         className="form-control"
                         id={this.props.name}
                         placeholder={this.props.placeholder}
-                        value={this.props.value}
-                        onChange={e => this.props.onChange(e)}
-                        data-sb-validations="required"
+                        required="required"
+                        name={this.props.name}
+                        onChange={this.props.onChange}
+                        onBlur={this.props.onBlur}
                     />}
-
-
-                <div className="invalid-feedback" data-sb-feedback="email:required">An email is
-                    required.
-                </div>
-                <div className="invalid-feedback" data-sb-feedback="email:email">Email is not valid.
-                </div>
+                <p className="help-block text-danger">
+                    {(this.props.touched && this.props.errors) && <span>This field is required</span>}
+                </p>
             </div>
         )
     }
