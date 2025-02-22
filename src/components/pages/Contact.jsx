@@ -90,7 +90,15 @@ export default withFormik({
         message: '',
     }),
     validationSchema: Yup.object().shape({
-        name: Yup.string().required('Name is required'),
+        name: Yup.string().min(3, "Too short").required('Name is required'),
+        email: Yup.string().email("Invalid email address").required("Email is required"),
+        phone: Yup.string()
+            .min(10, "Too short")
+            .max(15, "Too long")
+            .required('Phone is required'),
+        message: Yup.string()
+            .min(10, "Too short")
+            .required('Message is required'),
     }),
     handleSubmit: (values, {setSubmitting}) => {
         console.log(JSON.stringify(values));
