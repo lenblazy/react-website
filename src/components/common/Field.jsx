@@ -1,4 +1,5 @@
 import {Component} from "react";
+import log from "eslint-plugin-react/lib/util/log.js";
 
 class Field extends Component {
 
@@ -27,7 +28,10 @@ class Field extends Component {
                         onBlur={this.props.onBlur}
                     />}
                 <p className="help-block text-danger">
-                    {(this.props.touched && this.props.errors) && <span>This field is required</span>}
+                    {
+                        (this.props.touched && this.props.errors) &&
+                        <span>This field is required</span>
+                    }
                 </p>
             </div>
         )
